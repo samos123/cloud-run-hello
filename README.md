@@ -1,12 +1,15 @@
-# Cloud Run "Hello" container
+# Go buildpack cloud run CD example
 
-This repository contains the source code of a sample Go application that is
-distributed as the public container image (`gcr.io/cloudrun/hello`) used in the
-[Cloud Run quickstart](https://cloud.google.com/run/docs/quickstarts/) and as
-the suggested container image  in the Cloud Run UI on Cloud Console.
+So you have devs that don't want to learn anything? Welcome to buildpacks
+and cloud run which allows your developers to focus on coding while
+getting the benefits of containers and K8s without having to learn
+either technology.
 
-It also contains the source code of a placeholder public container
-(`gcr.io/cloudrun/placeholder`)  used to create a placeholder revision when setting up 
-Continuous Deployment.
+This repistory is setup for CD to cloud run by using Cloud Build. Cloud Build
+will do the following things:
 
-[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+- Create a docker image from source code even though no Dockerfile is present in
+  this repo. It will also push the image to gcr.io so it can be used by Cloud Run.
+- Deploy a Cloud Run service with the newly built image
+
+See the file `cloudbuild.yaml` in this repo for reference.
